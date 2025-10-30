@@ -96,9 +96,10 @@ show_connections() {
     netstat -tunp 2>/dev/null | awk 'NR>2 {printf "   %-6s %-25s %-25s %-10s %s\n", $1, $4, $5, $6, $7}' | head -n 10
     echo ""
 }
-menu() {
+menu(){
     while true; do
     header
+    
         if [ -z "$shown_desc" ]; then
             echo " "
             echo -e "${BOLD}${CYAN}Description:${RESET}"
@@ -110,6 +111,7 @@ menu() {
             echo ""
             shown_desc=1
         fi
+        
         echo -e "${BOLD}${CYAN}Choose an option:${RESET}"
         echo ""
         echo -e "   1) Show IP Address"
@@ -119,6 +121,7 @@ menu() {
         echo ""
         read -p "Enter your choice [1–4]: " choice
         echo ""
+        
         case $choice in
             1) show_ip; read -p "Press Enter to return to menu..." ;;
             2) show_interfaces; read -p "Press Enter to return to menu..." ;;
@@ -126,7 +129,8 @@ menu() {
             4) echo -e "${RED}Exiting...${RESET}"; sleep 0.5; clear; exit 0 ;;
             *) echo -e "${RED}Invalid choice! Please enter 1–4.${RESET}"; sleep 1 ;;
         esac
-        done}
+        done
+        }
 menu
 
 Description: Filters only established connections and counts them.
