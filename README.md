@@ -65,47 +65,49 @@ Description: Older equivalent of ss that lists all active TCP/UDP connections.
 
 
 
-    #!/bin/bash
+     #!/bin/bash
+     
      RED="\e[31m"
      GREEN="\e[32m"
      YELLOW="\e[33m"
      CYAN="\e[36m"
      BOLD="\e[1m"
      RESET="\e[0m"
-
- 
-    header(){    
-    clear    
-    echo -e "${CYAN}┌──────────────────────────────────────────────┐${RESET}"
-    echo -e "${CYAN}│${BOLD}             IP & NETWORK INFO TOOL           ${RESET}${CYAN}│${RESET}"
-    echo -e "${CYAN}└──────────────────────────────────────────────┘${RESET}"
-    }
+     
+     header(){    
+     clear    
+     echo -e "${CYAN}┌──────────────────────────────────────────────┐${RESET}"
+     echo -e "${CYAN}│${BOLD}             IP & NETWORK INFO TOOL           ${RESET}${CYAN}│${RESET}"
+     echo -e "${CYAN}└──────────────────────────────────────────────┘${RESET}"
+     }
     
-    show_ip(){
-    header
-    echo -e "${BOLD}${GREEN}System IP Address(es):${RESET}"
-    echo ""
-    ip addr show | awk '/inet / {print $2}' | grep -v '127.0.0.1' | sed 's/^/   → /'
-    echo ""
-    }
+     show_ip(){
+     header
+     echo -e "${BOLD}${GREEN}System IP Address(es):${RESET}"
+     echo ""
+     ip addr show | awk '/inet / {print $2}' | grep -v '127.0.0.1' | sed 's/^/   → /'
+     echo ""
+     }
     
-    show_interfaces() {
-    header
-    echo -e "${BOLD}${GREEN}Network Interfaces:${RESET}"
-    echo ""
-    ip -brief addr show | awk '{printf "   %-12s %-10s %s\n", $1, $2, $3}'
-    echo ""}
-    show_connections() {
-    header
-    echo -e "${BOLD}${GREEN}Active Network Connections:${RESET}"
-    echo ""
-    netstat -tunp 2>/dev/null | awk 'NR>2 {printf "   %-6s %-25s %-25s %-10s %s\n", $1, $4, $5, $6, $7}' | head -n 10
-    echo ""
-    }
+     show_interfaces() {
+     header
+     echo -e "${BOLD}${GREEN}Network Interfaces:${RESET}"
+     echo ""
+     ip -brief addr show | awk '{printf "   %-12s %-10s %s\n", $1, $2, $3}'
+     echo ""
+     }
+     
+     show_connections() {
+     header
+     echo -e "${BOLD}${GREEN}Active Network Connections:${RESET}"
+     echo ""
+     netstat -tunp 2>/dev/null | awk 'NR>2 {printf "   %-6s %-25s %-25s %-10s %s\n", $1, $4, $5, $6, $7}' | head -n 10
+     echo ""
+     }
     
-    menu() {
-    while true; do
-    header
+     menu() {
+     while true; do
+     header
         if [ -z "$shown_desc" ]; then
             echo " "
             echo -e "${BOLD}${CYAN}Description:${RESET}"
@@ -115,9 +117,9 @@ Description: Older equivalent of ss that lists all active TCP/UDP connections.
             echo ""
             echo -e "${CYAN}Example:${RESET}IP Address: 192.168.1.5 | Interface:wlan0 | Active Connections:4"
             echo ""
-            shown_desc=1
-            
+            shown_desc=1    
         fi
+        
         echo -e "${BOLD}${CYAN}Choose an option:${RESET}"
         echo ""
         echo -e "   1) Show IP Address"
