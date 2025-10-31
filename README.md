@@ -8,6 +8,11 @@ The IP and Network Info Tool provides a clear view of your system’s networking
 4) *Color-coded*, clean, and minimal CLI interface
 5) Works on all *Linux distributions*
 
+# Output Screen
+
+<img width="1004" height="498" alt="image" src="https://github.com/user-attachments/assets/f404c7dc-1a7d-4a57-8729-ddcb0f3b9ec2" />
+
+
 # Commands and Their Descriptions
 
 # 1. Display IP Address
