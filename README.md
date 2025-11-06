@@ -10,7 +10,8 @@ The IP and Network Info Tool provides a clear view of your system’s networking
 
 # Output Screen
 
-<img width="1004" height="498" alt="image" src="https://github.com/user-attachments/assets/f404c7dc-1a7d-4a57-8729-ddcb0f3b9ec2" />
+<img width="1147" height="776" alt="image" src="https://github.com/user-attachments/assets/1c153c1c-004f-4288-b30e-913b3cd71adb" />
+
 
 
 # Commands and Their Descriptions
