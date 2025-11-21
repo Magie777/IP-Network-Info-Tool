@@ -302,7 +302,7 @@ Description: Older equivalent of ss that lists all active TCP/UDP connections.
             *) echo -e "${RED}Invalid option. Please select 1-7.${RESET}"; sleep 1 ;;
         esac
         done
-}
+       }
 
         professional_intro
         menu
