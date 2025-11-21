@@ -7,38 +7,6 @@ CYAN="\e[36m"
 BOLD="\e[1m"
 RESET="\e[0m"
 
-spinner() {
-    local pid=$1
-    local delay=0.1
-    local spinstr='|/-\'
-    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-        local temp=${spinstr#?}
-        printf " [%c]  " "$spinstr"
-        local spinstr=$temp${spinstr%"$temp"}
-        sleep $delay
-        printf "\b\b\b\b\b\b"
-    done
-    printf "    \b\b\b\b"
-}
-
-animated_progress_bar() {
-    local duration="${1:-2}"
-    local width=50
-    local progress=0
-    local step=$((width / (duration * 10)))
-    echo -n "Processing ["
-    for ((i=1; i<=width; i++)); do echo -n " "; done
-    echo -n "] 0%"
-    for ((i=1; i<=duration*10; i++)); do
-        progress=$((i * 100 / (duration * 10)))
-        printf "\rProcessing ["
-        for ((j=1; j<=i*step; j++)); do printf "#"; done
-        for ((j=i*step+1; j<=width; j++)); do printf " "; done
-        printf "] %d%%" $progress
-        sleep 0.1
-    done
-    echo ""
-}
 professional_intro() {
     clear
     echo -e "${CYAN}${BOLD}Initializing IP AND NETWORK INFO TOOL...${RESET}"
